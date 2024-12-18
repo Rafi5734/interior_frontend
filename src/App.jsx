@@ -4,14 +4,15 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import MainNavbar from "./components/mainNavbar/MainNavbar";
 import HeroSection from "./components/heroSection/HeroSection";
+import OurProjects from "./components/ourProjects/OurProjects";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
       <MainNavbar />
       <HeroSection />
+      <OurProjects />
     </>
   );
 }
