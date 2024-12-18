@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.inter {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+}
+
+.swiper-button-prev {
+  color: white !important;
+}
+
+.swiper-button-next {
+  color: white !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: white !important;
+}
