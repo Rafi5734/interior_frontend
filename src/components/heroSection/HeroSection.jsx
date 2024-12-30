@@ -52,7 +52,7 @@ export default function HeroSection() {
               <p className="text-center mt-3">MADE INTERIORS,</p>
               <p className="text-center mt-3">DEFINING LIFESTYLES</p>
               <div className="mt-60">
-                <p className="text-center tracking-wider cursor-pointer flex flex-row items-center justify-center text-lg z-50 text-white">
+                <p className="text-center w-[40px] me-4 tracking-wider cursor-pointer flex flex-row items-center justify-center text-lg z-50 text-white">
                   Discover More <ArrowRightLicon  />
                 </p>
               </div>

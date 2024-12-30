@@ -4,7 +4,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
 } from "@nextui-org/react";
 
@@ -12,13 +11,14 @@ import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
-  DropdownSection,
   DropdownItem,
 } from "@nextui-org/dropdown";
 
 import { Image } from "@nextui-org/image";
 
 import MenuIcon from "../../assets/menuIcon";
+
+import { Link } from "react-router-dom";
 
 import "./mainNavbar.css";
 
@@ -37,17 +37,34 @@ const MainNavbar = () => {
     <div>
       <Navbar className="bg-transparent main_navbar fixed top-0 w-full z-50 pt-8 pb-8">
         <NavbarBrand>
-          <MainLogo />
+          <Link to="/">
+            <MainLogo />
+          </Link>
         </NavbarBrand>
+
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link className="text-white inter" href="#">
+            <Link className="text-white inter" to="/">
               Services
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link className="text-white inter" aria-current="page" href="#">
+            <Link to="/contact" className="text-white inter">
               Contacts
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link className="text-white inter" aria-current="page" to="/">
+              About Us
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              className="text-white inter"
+              aria-current="page"
+              to="/projects/details"
+            >
+              Projects
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -64,9 +81,21 @@ const MainNavbar = () => {
                   <MenuIcon />
                 </Button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions">
-                <DropdownItem key="new">Our Services</DropdownItem>
-                <DropdownItem key="copy">Contact</DropdownItem>
+              <DropdownMenu aria-label="Static Actions" className="inter">
+                <DropdownItem>
+                  <Link to="/" className="text-black">
+                    Our Services
+                  </Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/contact">Contact</Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/">About Us</Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to="/projects/details">Projects</Link>
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </NavbarItem>

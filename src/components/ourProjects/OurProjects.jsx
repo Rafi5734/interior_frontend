@@ -82,6 +82,7 @@ import React, { useState } from "react";
 import ArrowLeftIcon from "../../assets/ArrowLeftIcon";
 import ArrowRightIcon from "../../assets/ArrowRightIcon";
 import { Button } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 export default function OurProjects() {
   const images = [
@@ -174,11 +175,15 @@ export default function OurProjects() {
                 <p className="ms-5 mt-6 text-[#e5e0db] text-xl inter font-semibold">
                   HDB, Interior design, Space planning, Renovation
                 </p>
-                <div className="flex items-center">
-                  <Button isIconOnly className="ms-5 mt-6" variant="bordered">
-                    <ArrowRightIcon />
-                  </Button>
-                  <p className="mt-5 ms-6 text-[#e5e0db] text-xl inter font-semibold">See Our Projects</p>
+                <div>
+                  <Link to="/projects/details" className="flex items-center">
+                    <Button isIconOnly className="ms-5 mt-6" variant="bordered">
+                      <ArrowRightIcon />
+                    </Button>
+                    <p className="mt-5 ms-6 text-[#e5e0db] text-xl inter font-semibold">
+                      See Our Projects
+                    </p>
+                  </Link>
                 </div>
               </div>
             </div>
