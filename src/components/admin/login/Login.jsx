@@ -1,17 +1,38 @@
 import React, { useState } from "react";
+import { useLoginMutation } from "../../../redux/authSlice";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
+    role: "admin",
   });
+
+  const [login, { isLoading }] = useLoginMutation();
+
   const handleLoginFormInputChange = (e) => {
     setLoginInfo({ ...loginInfo, [e.target.name]: e.target.value });
   };
 
-  const loginFormSubmit = (e) => {
+  const loginFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(loginInfo);
+    try {
+      const result = await login(loginInfo);
+
+      if (result?.data) {
+        toast.success(result?.data?.message);
+        localStorage.setItem("user", JSON.stringify(loginInfo));
+        navigate("/admin/admin-dashboard");
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } catch (e) {
+      toast.error(e.message);
+    }
   };
   return (
     <div className="bg-[#25373b] text-white w-full h-screen flex justify-center items-center">
@@ -72,12 +93,22 @@ export default function Login() {
                     required
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                >
-                  Sign in
-                </button>
+                {isLoading ? (
+                  <button
+                    disabled
+                    type="submit"
+                    className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    Loggin ...
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  >
+                    Sign in
+                  </button>
+                )}
               </form>
             </div>
           </div>
