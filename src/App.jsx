@@ -14,6 +14,7 @@ import AdminDashboard from "./components/admin/adminDashboard/AdminDashboard";
 import ProtectedRoute from "./private/ProtectedRoute";
 import Login from "./components/admin/login/Login";
 import CreateProject from "./components/admin/createProject/CreateProject";
+import CreateProjectSection from "./components/admin/createProject/createProjectSection/CreateProjectSection";
 
 function App() {
   return (
@@ -41,6 +42,16 @@ function App() {
               <ProtectedRoute>
                 <MainNavbar />
                 <AdminDashboard />
+                <Footer />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path={`/admin/create-project/section`}
+            element={
+              <ProtectedRoute>
+                <MainNavbar />
+                <CreateProjectSection />
                 <Footer />
               </ProtectedRoute>
             }
