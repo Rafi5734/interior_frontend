@@ -57,7 +57,7 @@ export default function Footer() {
                 </p>
               </div>
               <p className="mt-4 mb-4 text-xl text-[#ffffff80]">
-                Copyright 2023 © A & D Designer’s Group.
+                Copyright 2025 © A & D Designer’s Group.
               </p>
             </div>
           </div>
