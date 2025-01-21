@@ -24,15 +24,26 @@ export default function AdminDashboard() {
           <div>
             <Card className="bg-[#a89687] text-white inter">
               <CardBody>
-                <Link to="/admin/create-project">
+                <Link to="/admin/slider-controll">
                   <p className="text-center text-2xl font-semibold inter">
-                    Create a project
+                    Change slider images
                   </p>
                 </Link>
               </CardBody>
             </Card>
           </div>
           <div>
+            <Card className="bg-[#a89687] text-white inter">
+              <CardBody>
+                <Link to="/admin/projects-slider-controll">
+                  <p className="text-center text-2xl font-semibold inter">
+                    Change projects slider image
+                  </p>
+                </Link>
+              </CardBody>
+            </Card>
+          </div>
+          {/* <div>
             <Card className="bg-[#a89687] text-white inter">
               <CardBody>
                 <Link to="/admin/create-project">
@@ -42,18 +53,7 @@ export default function AdminDashboard() {
                 </Link>
               </CardBody>
             </Card>
-          </div>
-          <div>
-            <Card className="bg-[#a89687] text-white inter">
-              <CardBody>
-                <Link to="/admin/create-project">
-                  <p className="text-center text-2xl font-semibold inter">
-                    Create a project
-                  </p>
-                </Link>
-              </CardBody>
-            </Card>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

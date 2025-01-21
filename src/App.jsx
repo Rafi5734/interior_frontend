@@ -16,6 +16,7 @@ import Login from "./components/admin/login/Login";
 import CreateProject from "./components/admin/createProject/CreateProject";
 import CreateProjectSection from "./components/admin/createProject/createProjectSection/CreateProjectSection";
 import SliderControll from "./components/admin/sliderControll/SliderControll";
+import ProjectsSliderController from "./components/admin/projectsSliderController/ProjectsSliderController";
 
 function App() {
   return (
@@ -53,6 +54,16 @@ function App() {
               <ProtectedRoute>
                 <MainNavbar />
                 <SliderControll />
+                <Footer />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/admin/projects-slider-controll"
+            element={
+              <ProtectedRoute>
+                <MainNavbar />
+                <ProjectsSliderController />
                 <Footer />
               </ProtectedRoute>
             }

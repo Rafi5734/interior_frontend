@@ -3,13 +3,15 @@ import React from "react";
 import AddIcon from "../../../assets/AddIcon";
 import SliderData from "./sliderData/SliderData";
 
-import {
-  useDisclosure,
-} from "@nextui-org/modal";
+import { useDisclosure } from "@nextui-org/modal";
 import SliderModal from "./sliderModal/SliderModal";
+import { useGetAllSLidersQuery } from "../../../redux/sliderSlice";
 
 export default function SliderControll() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const { data: getAllSlidersData, isLoading } = useGetAllSLidersQuery();
+  
   return (
     <div className="bg-[#25373b] text-white">
       <div className="pt-36 z-30 ps-4 pe-4">
@@ -25,7 +27,10 @@ export default function SliderControll() {
           Add a slider
         </Button>
         <SliderModal isOpen={isOpen} onOpenChange={onOpenChange} />
-        <SliderData />
+        <SliderData
+          getAllSlidersData={getAllSlidersData}
+          isLoading={isLoading}
+        />
       </div>
     </div>
   );
