@@ -43,17 +43,17 @@ export default function AdminDashboard() {
               </CardBody>
             </Card>
           </div>
-          {/* <div>
+          <div>
             <Card className="bg-[#a89687] text-white inter">
               <CardBody>
-                <Link to="/admin/create-project">
+                <Link to="/admin/services">
                   <p className="text-center text-2xl font-semibold inter">
-                    Create a project
+                    Customize services
                   </p>
                 </Link>
               </CardBody>
             </Card>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

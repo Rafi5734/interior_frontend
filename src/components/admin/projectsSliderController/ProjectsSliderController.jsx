@@ -55,8 +55,7 @@ export default function ProjectsSliderController() {
   return (
     <div className="pt-36 bg-[#25373b] text-white ps-4 pe-4">
       <p
-        className="text-center pt-5 pb-5 text-5xl font-bold underline underline-offset-4
-"
+        className="text-center pt-5 pb-5 text-5xl font-bold underline underline-offset-4"
       >
         Project slider controlling
       </p>

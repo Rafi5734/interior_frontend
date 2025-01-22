@@ -4,8 +4,14 @@ import PlaningIcon from "../../assets/PlaningIcon";
 import CheckIcon from "../../assets/CheckIcon";
 import HomeIcon from "../../assets/HomeIcon";
 import ThreeDIcon from "../../assets/ThreeDIcon";
+import { useGetAllServiceQuery } from "../../redux/serviceSlice";
+import { Image } from "@nextui-org/react";
 
 export default function Services() {
+  const { data: getAllServices, isLoading } = useGetAllServiceQuery();
+
+  console.log("getAllServices", getAllServices);
+
   return (
     <div className="bg-[#f5f3f2] pt-10 pb-10">
       <div className="container mx-auto mt-5">
@@ -14,88 +20,20 @@ export default function Services() {
           What Our Services Include
         </p>
         <div className="mt-16 mb-5 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10">
-          <div>
-            <div className="flex flex-row justify-between items-center">
-              <PenIcon />
-              <p className="inter">1</p>
-            </div>
-            <div className="mt-5">
-              <p className="text-2xl font-semibold inter">
-                Personalized Design Consultations
-              </p>
-              <p className="mt-2 text-lg inter text-sm	text-[#666666]">
-                We collaborate closely with you to understand your style,
-                preferences, and lifestyle needs. We translate your aspirations
-                into a cohesive design concept that is uniquely yours.
-              </p>
-            </div>
-          </div>
-          <div>
-            <div>
+          {getAllServices?.map((service, index) => (
+            <div key={service?._id}>
               <div className="flex flex-row justify-between items-center">
-                <PlaningIcon />
-                <p className="inter">2</p>
+                <Image src={service?.image} width={80} />
+                <p className="inter">{++index}</p>
               </div>
               <div className="mt-5">
-                <p className="text-2xl font-semibold inter">
-                  Thoughtful Space Planning
-                </p>
+                <p className="text-2xl font-semibold inter">{service?.title}</p>
                 <p className="mt-2 text-lg inter text-sm	text-[#666666]">
-                  We plan spaces that align with your vision, ensuring
-                  functional and aesthetic harmony within your home.
+                  {service?.description}
                 </p>
               </div>
             </div>
-          </div>
-          <div>
-            <div>
-              <div className="flex flex-row justify-between items-center">
-                <CheckIcon />
-                <p className="inter">3</p>
-              </div>
-              <div className="mt-5">
-                <p className="text-2xl font-semibold inter">
-                  Curated Material Selection
-                </p>
-                <p className="mt-2 text-lg inter text-sm	text-[#666666]">
-                  Our designers help you select premium materials to ensure your
-                  space is beautiful and long-lasting.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div>
-              <div className="flex flex-row justify-between items-center">
-                <HomeIcon />
-                <p className="inter">4</p>
-              </div>
-              <div className="mt-5">
-                <p className="text-2xl font-semibold inter">
-                  Seamless Technology Integration
-                </p>
-                <p className="mt-2 text-lg inter text-sm	text-[#666666]">
-                  We incorporate smart home technology into your design for a
-                  modern and convenient lifestyle.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div>
-              <div className="flex flex-row justify-between items-center">
-                <ThreeDIcon />
-                <p className="inter">5</p>
-              </div>
-              <div className="mt-5">
-                <p className="text-2xl font-semibold inter">3D Visualization</p>
-                <p className="mt-2 text-lg inter text-sm	text-[#666666]">
-                  We bring your design to life with advanced 3D visualizations,
-                  allowing you to experience your space before it's built.
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

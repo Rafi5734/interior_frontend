@@ -31,8 +31,8 @@ export default function SectionCreateModal({
       const file = files[0];
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", "Rafi_2"); // Replace with your Cloudinary upload preset
-      formData.append("folder", "client_projects"); // Optional: Set a folder for organization
+      formData.append("upload_preset", "Rafi_2");
+      formData.append("folder", "client_projects");
 
       try {
         const response = await fetch(
