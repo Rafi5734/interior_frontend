@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardBody } from "@nextui-org/card";
 import { Link } from "react-router-dom";
+import { Badge } from "@nextui-org/react";
 
 export default function AdminDashboard() {
   return (
@@ -52,6 +53,19 @@ export default function AdminDashboard() {
                   </p>
                 </Link>
               </CardBody>
+            </Card>
+          </div>
+          <div>
+            <Card className="bg-[#a89687] text-white inter">
+              <Badge color="danger" content="99+" shape="circle">
+                <CardBody>
+                  <Link to="/admin/all-message">
+                    <p className="text-center text-2xl font-semibold inter">
+                      See all messages
+                    </p>
+                  </Link>
+                </CardBody>
+              </Badge>
             </Card>
           </div>
         </div>

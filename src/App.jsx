@@ -18,6 +18,7 @@ import CreateProjectSection from "./components/admin/createProject/createProject
 import SliderControll from "./components/admin/sliderControll/SliderControll";
 import ProjectsSliderController from "./components/admin/projectsSliderController/ProjectsSliderController";
 import CreateService from "./components/admin/createService/CreateService";
+import SeeAllMessages from "./components/admin/seeAllMessages/SeeAllMessages";
 
 function App() {
   return (
@@ -95,6 +96,16 @@ function App() {
               <ProtectedRoute>
                 <MainNavbar />
                 <CreateProject />
+                <Footer />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/admin/all-message"
+            element={
+              <ProtectedRoute>
+                <MainNavbar />
+                <SeeAllMessages />
                 <Footer />
               </ProtectedRoute>
             }
