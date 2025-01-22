@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authSlice = createApi({
   reducerPath: "auth",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api",
+    baseUrl: "https://interior-backend-inky.vercel.app/api",
     // baseUrl: `${import.meta.env.VITE_main_url}`,
   }),
   tagTypes: ["auth"],
