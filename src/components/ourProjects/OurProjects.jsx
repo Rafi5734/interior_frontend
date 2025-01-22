@@ -107,7 +107,7 @@ export default function OurProjects() {
                 </p>
                 <div>
                   <Link
-                    to={`/projects/details/${currentSlide._id}`}
+                    to={`/projects/details`}
                     className="flex items-center"
                   >
                     <Button isIconOnly className="ms-5 mt-6" variant="bordered">
