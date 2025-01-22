@@ -1,6 +1,7 @@
 {
   "name": "interior_frontend",
   "private": true,
+  "homepage": "http://archihubbd.com/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
