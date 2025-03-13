@@ -68,6 +68,17 @@ export default function AdminDashboard() {
               </Badge>
             </Card>
           </div>
+          <div>
+            <Card className="bg-[#a89687] text-white inter">
+              <CardBody>
+                <Link to="/admin/footer">
+                  <p className="text-center text-2xl font-semibold inter">
+                    Footer control
+                  </p>
+                </Link>
+              </CardBody>
+            </Card>
+          </div>
         </div>
       </div>
     </div>

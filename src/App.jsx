@@ -1,6 +1,3 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import LandingPage from "./components/landingPage/LandingPage";
@@ -19,6 +16,7 @@ import SliderControll from "./components/admin/sliderControll/SliderControll";
 import ProjectsSliderController from "./components/admin/projectsSliderController/ProjectsSliderController";
 import CreateService from "./components/admin/createService/CreateService";
 import SeeAllMessages from "./components/admin/seeAllMessages/SeeAllMessages";
+import FooterControll from "./components/admin/footerControll/FooterControll";
 
 function App() {
   return (
@@ -106,6 +104,16 @@ function App() {
               <ProtectedRoute>
                 <MainNavbar />
                 <SeeAllMessages />
+                <Footer />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/admin/footer"
+            element={
+              <ProtectedRoute>
+                <MainNavbar />
+                <FooterControll />
                 <Footer />
               </ProtectedRoute>
             }
