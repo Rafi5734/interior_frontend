@@ -38,7 +38,7 @@ export default function FooterControll() {
     }
   };
 
-//   console.log("getAllData", getAllData);
+  //   console.log("getAllData", getAllData);
 
   return (
     <div className="bg-[#25373b] text-white pt-36 z-30 ps-4 pe-4 pb-10">

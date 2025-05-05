@@ -6,6 +6,7 @@ import { projectSliderSlice } from "../redux/projectSliderSlice";
 import { serviceSlice } from "../redux/serviceSlice";
 import { contactSlice } from "../redux/contactSlice";
 import { footerSlice } from "../redux/footerSlice";
+import { navbarSlice } from "../redux/navLogoSlice";
 // import { logInApiSlice } from "../features/api/logInApiSlice";
 
 export const store = configureStore({
@@ -17,6 +18,7 @@ export const store = configureStore({
     [serviceSlice.reducerPath]: serviceSlice.reducer,
     [contactSlice.reducerPath]: contactSlice.reducer,
     [footerSlice.reducerPath]: footerSlice.reducer,
+    [navbarSlice.reducerPath]: navbarSlice.reducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares().concat(
@@ -26,6 +28,7 @@ export const store = configureStore({
       projectSliderSlice.middleware,
       serviceSlice.middleware,
       contactSlice.middleware,
-      footerSlice.middleware
+      footerSlice.middleware,
+      navbarSlice.middleware
     ),
 });

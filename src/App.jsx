@@ -17,6 +17,7 @@ import ProjectsSliderController from "./components/admin/projectsSliderControlle
 import CreateService from "./components/admin/createService/CreateService";
 import SeeAllMessages from "./components/admin/seeAllMessages/SeeAllMessages";
 import FooterControll from "./components/admin/footerControll/FooterControll";
+import NavbarLogoControll from "./components/admin/navbarLogoControll/NavbarLogoControll";
 
 function App() {
   return (
@@ -114,6 +115,16 @@ function App() {
               <ProtectedRoute>
                 <MainNavbar />
                 <FooterControll />
+                <Footer />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/admin/navbar"
+            element={
+              <ProtectedRoute>
+                <MainNavbar />
+                <NavbarLogoControll />
                 <Footer />
               </ProtectedRoute>
             }

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -21,6 +20,7 @@ import MenuIcon from "../../assets/menuIcon";
 import { Link } from "react-router-dom";
 
 import "./mainNavbar.css";
+import { useGetAllNavbarQuery } from "../../redux/navLogoSlice";
 
 export const MainLogo = () => {
   return (
@@ -33,12 +33,21 @@ export const MainLogo = () => {
 };
 
 const MainNavbar = () => {
+  const { data: getAllNavData } = useGetAllNavbarQuery();
+
   return (
-    <div>
-      <Navbar className="bg-transparent main_navbar fixed top-0 w-full z-50 pt-8 pb-8">
-        <NavbarBrand>
+    <div className="container mx-auto">
+      <Navbar className="bg-transparent main_navbar fixed top-0 w-full z-50 pt-8 pb-8 forum">
+        <NavbarBrand className="flex justify-center items-center">
           <Link to="/">
-            <MainLogo />
+            {getAllNavData?.map((content) => (
+              <p
+                key={content?._id}
+                className="text-5xl text-white italic text-center"
+              >
+                {content?.content}
+              </p>
+            ))}
           </Link>
         </NavbarBrand>
 
