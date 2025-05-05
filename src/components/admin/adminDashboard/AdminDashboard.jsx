@@ -90,6 +90,17 @@ export default function AdminDashboard() {
               </CardBody>
             </Card>
           </div>
+          <div>
+            <Card className="bg-[#a89687] text-white inter">
+              <CardBody>
+                <Link to="/admin/change-contact-info">
+                  <p className="text-center text-2xl font-semibold inter">
+                    Change Contact Info
+                  </p>
+                </Link>
+              </CardBody>
+            </Card>
+          </div>
         </div>
       </div>
     </div>

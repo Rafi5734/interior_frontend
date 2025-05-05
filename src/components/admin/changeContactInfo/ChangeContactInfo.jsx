@@ -9,41 +9,44 @@ import {
   TableCell,
 } from "@nextui-org/table";
 import { useDisclosure } from "@nextui-org/modal";
+
 import AddIcon from "../../../assets/AddIcon";
 import DeleteIcon from "../../../assets/DeleteIcon";
 import {
-  useDeleteANavbarMutation,
-  useGetAllNavbarQuery,
-} from "../../../redux/navLogoSlice";
-import CreateNavContentModal from "./createNavContentModal/CreateNavContentModal";
+  useDeleteAContactInfoMutation,
+  useGetAllContactInfoQuery,
+} from "../../../redux/contactInfoSlice";
 import toast from "react-hot-toast";
-export default function NavbarLogoControll() {
+import CreateContactInfoModal from "./createContactInfoModal/CreateContactInfoModal";
+export default function ChangeContactInfo() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const { data: getAllNavData, isLoading: navLoader } = useGetAllNavbarQuery();
-  const [deleteANavbar, { isLoading: deleteLoader }] =
-    useDeleteANavbarMutation();
+  const { data: getAllContactInfo, isLoading: contactInfoLoader } =
+    useGetAllContactInfoQuery();
+  const [deleteAContactInfo, { isLoading: deleteLoader }] =
+    useDeleteAContactInfoMutation();
 
   const handleDeleteNavbar = async (navId) => {
     try {
-      const res = await deleteANavbar(navId);
+      const res = await deleteAContactInfo(navId);
       if (res?.data) {
-        toast.success("Nav content deleted.");
+        toast.success("Contact Info Added.");
       } else {
-        toast.error("Nav content not deleted.");
+        toast.error("Contact Info Not Added.");
       }
     } catch (error) {
       toast.error(error);
     }
   };
+
   return (
     <div className="bg-[#25373b] text-white pt-36 z-30 ps-4 pe-4 pb-10">
       <p className="inter text-center font-bold text-5xl">
-        Navbar Logo Control
+        Change Contact Info
       </p>
 
       <div className="container mx-auto mt-10 mb-10">
-        {getAllNavData?.length < 1 ? (
+        {getAllContactInfo?.length < 1 ? (
           <Tooltip content="Create footer section design">
             <Button onPress={onOpen} isIconOnly color="primary">
               <AddIcon />
@@ -57,22 +60,34 @@ export default function NavbarLogoControll() {
           </Tooltip>
         )}
 
-        <CreateNavContentModal isOpen={isOpen} onOpenChange={onOpenChange} />
+        <CreateContactInfoModal isOpen={isOpen} onOpenChange={onOpenChange} />
 
         <Table
           aria-label="Example static collection table"
           className="mt-5 mb-5 text-black"
         >
           <TableHeader>
-            <TableColumn>Nav Content</TableColumn>
-            <TableColumn>Created At</TableColumn>
-            <TableColumn>ACTIONS</TableColumn>
+            <TableColumn>Email</TableColumn>
+            <TableColumn>Phone Number</TableColumn>
+            <TableColumn>Address</TableColumn>
+            <TableColumn>Map</TableColumn>
+            <TableColumn>Actions</TableColumn>
           </TableHeader>
-          <TableBody isLoading={navLoader}>
-            {getAllNavData?.map((footer) => (
+          <TableBody isLoading={contactInfoLoader}>
+            {getAllContactInfo?.map((footer) => (
               <TableRow key={footer?._id}>
-                <TableCell>{footer?.content}</TableCell>
-                <TableCell>{footer?.timestamp}</TableCell>
+                <TableCell>{footer?.email}</TableCell>
+                <TableCell>{footer?.phone_number}</TableCell>
+                <TableCell>{footer?.address}</TableCell>
+                <TableCell>
+                  <iframe
+                    src={footer?.location_iframe}
+                    width="100%"
+                    height="450"
+                    allowFullScreen=""
+                    loading="lazy"
+                  ></iframe>
+                </TableCell>
                 <TableCell>
                   <Tooltip content="Delete nav data">
                     <Button

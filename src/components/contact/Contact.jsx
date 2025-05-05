@@ -1,5 +1,5 @@
 import { Button, Image } from "@nextui-org/react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Select, SelectItem } from "@nextui-org/react";
 import { Input, Textarea } from "@nextui-org/input";
 import MailIcon from "../../assets/MailIcon";
@@ -7,6 +7,7 @@ import PhoneIcon from "../../assets/PhoneIcon";
 import LocationIcon from "../../assets/LocationIcon";
 import { useCreateContactMutation } from "../../redux/contactSlice";
 import toast from "react-hot-toast";
+import { useGetAllContactInfoQuery } from "../../redux/contactInfoSlice";
 
 export const enquiryTypes = [
   { key: "booking_appointment", label: "Booking Appointment" },
@@ -16,7 +17,7 @@ export const enquiryTypes = [
 ];
 
 export default function Contact() {
-  const [value, setValue] = useState(new Set([]));
+  const { data: getContactInfo } = useGetAllContactInfoQuery();
 
   const [createContact] = useCreateContactMutation();
 
@@ -48,7 +49,6 @@ export default function Contact() {
     } catch (err) {
       toast.error(err?.message);
     }
-    console.log("formData", formData);
   };
 
   return (
@@ -64,38 +64,41 @@ export default function Contact() {
           <p className="text-center inter text-2xl tracking-widest">
             Contact Us
           </p>
-          <p className="text-center mt-3">Let's Talk</p>
+          <p className="text-center mt-3">Let{"'"}s Talk</p>
         </div>
       </div>
       <div className="mt-10 mb-10 container mx-auto">
         <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-8">
-          <div>
-            <div>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.747756031005!2d103.88603018363618!3d1.3273246582111646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da17b4e5555555%3A0xe620ff5ae87e70b4!2sA%20%26%20D%20Designer%E2%80%99s%20Group%20Pte%20Ltd!5e0!3m2!1sen!2sbd!4v1734875247428!5m2!1sen!2sbd"
-                width="100%"
-                height="450"
-                allowFullScreen=""
-                loading="lazy"
-              ></iframe>
+          {getContactInfo?.map((contactInfo) => (
+            <div key={contactInfo?._id}>
+              <div>
+                <iframe
+                  src={contactInfo?.location_iframe}
+                  width="100%"
+                  height="450"
+                  allowFullScreen=""
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <div className="bg-[#a89687] mt-8 p-8 text-white text-4xl font-semibold inter">
+                <p className="tracking-wider">Contact Us!</p>
+                <hr className="h-px mt-5 bg-gray-200 border-0" />
+                <div className="mt-5 flex flex-row items-center">
+                  <MailIcon />{" "}
+                  <p className="text-xl ms-4">{contactInfo?.email}</p>
+                </div>
+                <div className="mt-5 flex flex-row items-center">
+                  <PhoneIcon />{" "}
+                  <p className="text-xl ms-4">{contactInfo?.phone_number}</p>
+                </div>
+                <div className="mt-5 flex flex-row items-center">
+                  <LocationIcon />
+                  <p className="text-xl ms-4">{contactInfo?.address}</p>
+                </div>
+              </div>
             </div>
-            <div className="bg-[#a89687] mt-8 p-8 text-white text-4xl font-semibold inter">
-              <p className="tracking-wider">Contact Us!</p>
-              <hr className="h-px mt-5 bg-gray-200 border-0" />
-              <div className="mt-5 flex flex-row items-center">
-                <MailIcon /> <p className="text-xl ms-4">enquiry@interior.sg</p>
-              </div>
-              <div className="mt-5 flex flex-row items-center">
-                <PhoneIcon /> <p className="text-xl ms-4">01998828</p>
-              </div>
-              <div className="mt-5 flex flex-row items-center">
-                <LocationIcon />
-                <p className="text-xl ms-4">
-                  140 Paya Lebar Rd, #02-13 AZ@Paya Lebar, Singapore 409015
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
+
           <div className="flex flex-col justify-center">
             <div>
               <p className="text-4xl inter font-bold tracking-wider mb-6">

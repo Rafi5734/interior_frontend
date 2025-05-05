@@ -43,7 +43,7 @@ const MainNavbar = () => {
             {getAllNavData?.map((content) => (
               <p
                 key={content?._id}
-                className="text-5xl text-white italic text-center"
+                className="text-5xl text-white italic text-center font-bold"
               >
                 {content?.content}
               </p>

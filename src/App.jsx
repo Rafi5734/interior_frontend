@@ -18,6 +18,7 @@ import CreateService from "./components/admin/createService/CreateService";
 import SeeAllMessages from "./components/admin/seeAllMessages/SeeAllMessages";
 import FooterControll from "./components/admin/footerControll/FooterControll";
 import NavbarLogoControll from "./components/admin/navbarLogoControll/NavbarLogoControll";
+import ChangeContactInfo from "./components/admin/changeContactInfo/ChangeContactInfo";
 
 function App() {
   return (
@@ -125,6 +126,16 @@ function App() {
               <ProtectedRoute>
                 <MainNavbar />
                 <NavbarLogoControll />
+                <Footer />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/admin/change-contact-info"
+            element={
+              <ProtectedRoute>
+                <MainNavbar />
+                <ChangeContactInfo />
                 <Footer />
               </ProtectedRoute>
             }
